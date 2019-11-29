@@ -3,11 +3,16 @@
 
 #### User model description 
 `{
-Uuid: unique identifier\n
+Uuid: unique identifier
+
 Email: user email address
+
 FirstName: 
+
 LastName:
+
 PhoneNumber:
+
 Address: {
 	Lat:	
 	Lng:
@@ -17,8 +22,11 @@ Address: {
 	Pin:
 	}
 Type: user type (buyer, seller, admin)
+
 Password: ****
+
 CreatedAt: when was the profile created
+
 UpdatedAt: when was the profile last updated
 }
 `
