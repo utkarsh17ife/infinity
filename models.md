@@ -56,6 +56,7 @@ Description: Item description
 -----
 
 #### MarketPlace model description:
+
 ````{
 ItemId:
 Quantity:
