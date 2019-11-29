@@ -74,7 +74,8 @@ Address: {
 	}
 CreatedAt: 
 UpdatedAt:
-}````
+}
+````
 
 
 ##### Functions on MarketPlace model
