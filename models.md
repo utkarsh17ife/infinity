@@ -1,9 +1,9 @@
 ## Project: Infinity
 ## File: model design
 
-#### User model escription 
+#### User model description 
 `{
-Uuid: unique identifier
+Uuid: unique identifier\n
 Email: user email address
 FirstName: 
 LastName:
