@@ -1,7 +1,7 @@
-##Project: Infinity
-##File: model design
+## Project: Infinity
+## File: model design
 
-####User 
+#### User model escription 
 `{
 Uuid: unique identifier
 Email: user email address
