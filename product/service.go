@@ -12,11 +12,11 @@ var ErrInvalidArgument = errors.New("invalid argument")
 type Service interface {
 	CreateProduct(ctx context.Context, product *Product) (*Product, error)
 
-	GetProductById(ctx context.Context, productID string) (*Product, error)
+	GetProductByID(ctx context.Context, productID string) (*Product, error)
 
 	GetProductByLocation(ctx context.Context, location string) (*Product, error)
 
-	GetProductByCreatorId(ctx context.Context, creatorID string) ([]*Product, error)
+	GetProductByCreatorID(ctx context.Context, creatorID string) ([]*Product, error)
 
 	GetProductList(ctx context.Context) ([]*Product, error)
 
