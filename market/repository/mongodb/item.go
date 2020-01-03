@@ -3,7 +3,7 @@ package mongodb
 import (
 	"context"
 
-	"github.com/utkarsh17ife/market/item"
+	"github.com/utkarsh17ife/infinity/market"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -18,25 +18,25 @@ func New(db *mongo.Client) item.Repository {
 	}
 }
 
-func (repo *repository) CreateItem(ctx context.Context, item *item.Item) (*item.Item, error) {
+func (repo *repository) CreateItem(ctx context.Context, item *market.Item) (*market.Item, error) {
 	return nil, nil
 }
-func (repo *repository) GetItemByID(ctx context.Context, itemID string) (*item.Item, error) {
+func (repo *repository) GetItemByID(ctx context.Context, itemID string) (*market.Item, error) {
 	return nil, nil
 }
-func (repo *repository) GetItemByLocation(ctx context.Context, location string) (*item.Item, error) {
+func (repo *repository) GetItemByLocation(ctx context.Context, location string) (*market.Item, error) {
 	return nil, nil
 }
-func (repo *repository) GetItemByCreatorID(ctx context.Context, creatorID string) ([]*item.Item, error) {
+func (repo *repository) GetItemByCreatorID(ctx context.Context, creatorID string) ([]*market.Item, error) {
 	return nil, nil
 }
-func (repo *repository) GetItemList(ctx context.Context) ([]*item.Item, error) {
+func (repo *repository) GetItemList(ctx context.Context) ([]*market.Item, error) {
 	return nil, nil
 }
-func (repo *repository) UpdateItem(ctx context.Context, updateItem *item.Item) (*item.Item, error) {
+func (repo *repository) UpdateItem(ctx context.Context, updateItem *market.Item) (*market.Item, error) {
 	return nil, nil
 }
-func (repo *repository) SearchItem(ctx context.Context, searchString string) ([]*item.Item, error) {
+func (repo *repository) SearchItem(ctx context.Context, searchString string) ([]*market.Item, error) {
 	return nil, nil
 }
 func (repo *repository) RemoveItem(ctx context.Context, itemID string) error {
