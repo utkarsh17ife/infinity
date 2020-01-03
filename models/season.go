@@ -1,4 +1,4 @@
-package common_models
+package models
 
 // Season ....
 type Season int

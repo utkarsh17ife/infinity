@@ -1,5 +1,5 @@
 // Package location provides the Location aggregate.
-package common_models
+package models
 
 import (
 	"errors"
