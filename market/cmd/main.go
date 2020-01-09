@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"context"
@@ -11,21 +11,30 @@ import (
 
 	"github.com/go-kit/kit/log"
 
-	"github.com/go-kit/kit/examples/shipping/routing"
+	"github.com/utkarsh17ife/infinity/market"
+	"github.com/utkarsh17ife/infinity/market/repository/mongodb"
+	"github.com/utkarsh17ife/infinity/market/transport"
+	"github.com/utkarsh17ife/infinity/market/transport/httpserver"
+
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 const (
 	defaultPort              = "8080"
 	defaultRoutingServiceURL = "http://localhost:7878"
+	defaultMongoURL          = "mongodb://127.0.0.1:27017"
 )
 
 func main() {
 	var (
-		addr  = envString("PORT", defaultPort)
-		rsurl = envString("ROUTINGSERVICE_URL", defaultRoutingServiceURL)
+		addr = envString("PORT", defaultPort)
+		// rsurl = envString("ROUTINGSERVICE_URL", defaultRoutingServiceURL)
+		// murl = envString("MONGO_URL", defaultMongoURL)
 
-		httpAddr          = flag.String("http.addr", ":"+addr, "HTTP listen address")
-		routingServiceURL = flag.String("service.routing", rsurl, "routing service URL")
+		httpAddr = flag.String("http.addr", ":"+addr, "HTTP listen address")
+		// routingServiceURL = flag.String("service.routing", rsurl, "routing service URL")
+		// mongoURL = flag.String("mongo.url", murl, "monogo connection url")
 
 		ctx = context.Background()
 	)
@@ -36,27 +45,25 @@ func main() {
 	logger = log.NewLogfmtLogger(log.NewSyncWriter(os.Stderr))
 	logger = log.With(logger, "ts", log.DefaultTimestampUTC)
 
-	// we need to create repo for item micro service
+	// creating the repo
+	mongoClient, _ := connectToMongo(defaultMongoURL)
+	marketRepo := mongodb.New(mongoClient)
 
-	var rs routing.Service
-	rs = routing.NewProxyingMiddleware(ctx, *routingServiceURL)(rs)
-
-	// create service
+	// create the service
 	var ms market.Service
-	ms = market.NewService(rs)
+	ms = market.NewService(marketRepo)
 
-	httpLogger := log.With(logger, "component", "http")
+	// make endpoints
+	ep := transport.MakeEndpoints(ms)
 
-	mux := http.NewServeMux()
+	// httpLogger := log.With(logger, "component", "http")
 
-	http.Handle("/", accessControl(mux))
-
-	mux.Handle("/market/v1/", market.MakeHandler(ms, httpLogger))
+	handler := httpserver.NewHTTPServer(ctx, ep)
 
 	errs := make(chan error, 2)
 	go func() {
 		logger.Log("transport", "http", "address", *httpAddr, "msg", "listening")
-		errs <- http.ListenAndServe(*httpAddr, nil)
+		errs <- http.ListenAndServe(*httpAddr, handler)
 	}()
 	go func() {
 		c := make(chan os.Signal)
@@ -87,4 +94,23 @@ func envString(env, fallback string) string {
 		return fallback
 	}
 	return e
+}
+
+func connectToMongo(mongoURL string) (*mongo.Client, error) {
+
+	clientOptions := options.Client().ApplyURI(mongoURL)
+	client, err := mongo.Connect(context.TODO(), clientOptions)
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = client.Ping(context.TODO(), nil)
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Connected to MongoDB!")
+	return client, nil
 }
