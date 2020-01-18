@@ -1,17 +1,12 @@
 package models
 
-// Season ....
-type Season int
+var Seasons = []string{"autmn", "monsoon", "winter", "summer"}
 
-// Season ....
-const (
-	Spring Season = iota
-	Autmn
-	Winter
-	Summer
-	Monsoon
-)
-
-func (s Season) String() string {
-	return [...]string{"Spring", "Autmn", "Winter", "Summer", "Monsoon"}[s]
+func validSeason(seasonToCheck string) bool {
+	for _, item := range Seasons {
+		if seasonToCheck == item {
+			return true
+		}
+	}
+	return false
 }

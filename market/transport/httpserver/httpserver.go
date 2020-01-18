@@ -13,12 +13,18 @@ import (
 // NewHTTPServer is the http transport layer
 func NewHTTPServer(ctx context.Context, endpoints transport.Endpoints) http.Handler {
 	r := mux.NewRouter()
-	// r.Use(commonMiddleware) // @see https://stackoverflow.com/a/51456342
+	r.Use(commonMiddleware) // @see https://stackoverflow.com/a/51456342
 
 	r.Methods("POST").Path("/item").Handler(httptransport.NewServer(
 		endpoints.CreateItem,
 		decodeCreateItemRequest,
 		encodeCreateItemResponse,
+	))
+
+	r.Methods("GET").Path("/item/{item_id}").Handler(httptransport.NewServer(
+		endpoints.GetItemByID,
+		decodeGetItemByIDRequest,
+		encodeGetItemByIDResponse,
 	))
 
 	return r

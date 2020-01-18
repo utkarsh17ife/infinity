@@ -3,6 +3,8 @@ package market
 import (
 	"context"
 	"log"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 // service implements the Item Service
@@ -22,13 +24,14 @@ func (s *service) CreateItem(ctx context.Context, item *Item) (*Item, error) {
 	item, err := s.repository.CreateItem(ctx, item)
 	return item, err
 }
-func (s *service) GetItemByID(ctx context.Context, itemID string) (*Item, error) {
-	return nil, nil
+func (s *service) GetItemByID(ctx context.Context, itemID primitive.ObjectID) (*Item, error) {
+	item, err := s.repository.GetItemByID(ctx, itemID)
+	return item, err
 }
 func (s *service) GetItemByLocation(ctx context.Context, location string) (*Item, error) {
 	return nil, nil
 }
-func (s *service) GetItemByCreatorID(ctx context.Context, creatorID string) ([]*Item, error) {
+func (s *service) GetItemByCreatorID(ctx context.Context, creatorID primitive.ObjectID) ([]*Item, error) {
 	return nil, nil
 }
 func (s *service) GetItemList(ctx context.Context) ([]*Item, error) {
@@ -40,7 +43,7 @@ func (s *service) UpdateItem(ctx context.Context, updateItem *Item) (*Item, erro
 func (s *service) SearchItem(ctx context.Context, searchString string) ([]*Item, error) {
 	return nil, nil
 }
-func (s *service) RemoveItem(ctx context.Context, itemID string) error {
+func (s *service) RemoveItem(ctx context.Context, itemID primitive.ObjectID) error {
 	return nil
 }
 func (s *service) IncreaseItemQuantity(ctx context.Context, number int32) error {

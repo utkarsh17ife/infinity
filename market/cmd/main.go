@@ -21,7 +21,7 @@ import (
 )
 
 const (
-	defaultPort              = "8080"
+	defaultPort              = "7000"
 	defaultRoutingServiceURL = "http://localhost:7878"
 	defaultMongoURL          = "mongodb://127.0.0.1:27017"
 )

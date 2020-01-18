@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  digest = "1:3dd9912f6fdb0feaf39dde946262ba20a3c744cf157b2a3a7d8fb84a974d0345"
+  name = "cloud.google.com/go"
+  packages = ["compute/metadata"]
+  pruneopts = "UT"
+  revision = "b4cdc8d6eb508c4e74df26094d1adb678c87f818"
+  version = "v0.51.0"
+
+[[projects]]
   digest = "1:938f79d09131c6204cee2c363a6e9066a369bc1977f09028ca549f44a836b734"
   name = "github.com/DataDog/zstd"
   packages = ["."]
@@ -10,27 +18,18 @@
   version = "v1.4.4"
 
 [[projects]]
-  branch = "master"
-  digest = "1:e307126636dff23d73e1aa30f6cb117ce76f493548c62ff0e7633f903c9172aa"
-  name = "github.com/afex/hystrix-go"
-  packages = [
-    "hystrix",
-    "hystrix/metric_collector",
-    "hystrix/rolling",
-  ]
+  digest = "1:76dc72490af7174349349838f2fe118996381b31ea83243812a97e5a0fd5ed55"
+  name = "github.com/dgrijalva/jwt-go"
+  packages = ["."]
   pruneopts = "UT"
-  revision = "fa1af6a1f4f56e0e50d427fe901cd604d8c6fb8a"
+  revision = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e"
+  version = "v3.2.0"
 
 [[projects]]
-  digest = "1:87771c449746a2814eb0c209794f603b2d5dcbb369d370ed8d203846cdbc4ac4"
+  digest = "1:b5be8c9f1828fabf180eff4437ffb01004e0026795f6b7bf7b0bc7c40b9d3609"
   name = "github.com/go-kit/kit"
   packages = [
-    "circuitbreaker",
     "endpoint",
-    "examples/shipping/cargo",
-    "examples/shipping/location",
-    "examples/shipping/routing",
-    "examples/shipping/voyage",
     "log",
     "transport",
     "transport/http",
@@ -56,6 +55,14 @@
   version = "v1.8.0"
 
 [[projects]]
+  digest = "1:573ca21d3669500ff845bdebee890eb7fc7f0f50c59f2132f2a0c6b03d85086a"
+  name = "github.com/golang/protobuf"
+  packages = ["proto"]
+  pruneopts = "UT"
+  revision = "6c65a5562fc06764971b7c5d05c76c75e84bdbf7"
+  version = "v1.3.2"
+
+[[projects]]
   branch = "master"
   digest = "1:700b1e527116332847452edf9febc0c252c026785a8c3cfa3f68a8eeffb09ee8"
   name = "github.com/golang/snappy"
@@ -64,12 +71,44 @@
   revision = "ff6b7dc882cf4cfba7ee0b9f7dcc1ac096c554aa"
 
 [[projects]]
-  digest = "1:582b704bebaa06b48c29b0cec224a6058a09c86883aaddabde889cd1a5f73e1b"
-  name = "github.com/google/uuid"
+  digest = "1:c79fb010be38a59d657c48c6ba1d003a8aa651fa56b579d959d74573b7dff8e1"
+  name = "github.com/gorilla/context"
   packages = ["."]
   pruneopts = "UT"
-  revision = "0cd6bf5da1e1c83f8b45653022c74f71af0538a4"
+  revision = "08b5f424b9271eedf6f9f0ce86cb9396ed337a42"
   version = "v1.1.1"
+
+[[projects]]
+  digest = "1:cbec35fe4d5a4fba369a656a8cd65e244ea2c743007d8f6c1ccb132acf9d1296"
+  name = "github.com/gorilla/mux"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "00bdffe0f3c77e27d2cf6f5c70232a2d3e4d9c15"
+  version = "v1.7.3"
+
+[[projects]]
+  digest = "1:0d7528cfe5ce822a19144dba3e38b9ae6a817b6fb0f9ba69db8581bffbba54b1"
+  name = "github.com/gorilla/pat"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "6448f9b4fe872d94a69eaf7daf6db2cc04afe743"
+  version = "v1.0.1"
+
+[[projects]]
+  digest = "1:e72d1ebb8d395cf9f346fd9cbc652e5ae222dd85e0ac842dc57f175abed6d195"
+  name = "github.com/gorilla/securecookie"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "e59506cc896acb7f7bf732d4fdf5e25f7ccd8983"
+  version = "v1.1.1"
+
+[[projects]]
+  digest = "1:172c862eabc72e90f461bcef223c49869628bec6d989386dfb03281ae3222148"
+  name = "github.com/gorilla/sessions"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "4355a998706e83fe1d71c31b07af94e34f68d74a"
+  version = "v1.2.0"
 
 [[projects]]
   branch = "master"
@@ -80,12 +119,95 @@
   revision = "b84e30acd515aadc4b783ad4ff83aff3299bdfe0"
 
 [[projects]]
-  digest = "1:e5d0bd87abc2781d14e274807a470acd180f0499f8bf5bb18606e9ec22ad9de9"
-  name = "github.com/pborman/uuid"
+  digest = "1:aea1c53d4757225e70d19ddd87e7843a25897b3c4f3901a2ab07e04586a5b76a"
+  name = "github.com/lestrrat-go/jwx"
+  packages = [
+    "internal/base64",
+    "internal/option",
+    "jwa",
+    "jwk",
+  ]
+  pruneopts = "UT"
+  revision = "5d60d87d07ddea9874404944870bec81aabcf574"
+  version = "v0.9.0"
+
+[[projects]]
+  digest = "1:d34786b14b57f8b694871e3fd34527c5022b123de141f2a4c94731ab57d9823e"
+  name = "github.com/markbates/going"
+  packages = ["defaults"]
+  pruneopts = "UT"
+  revision = "7745e382f2e927b7ad1bc04524fa32217acaeb15"
+  version = "v1.0.3"
+
+[[projects]]
+  digest = "1:c48a69834da809e14a9286a7b45a287c1a5aeb761ba4296fabbcdcc20d6554ee"
+  name = "github.com/markbates/goth"
+  packages = [
+    ".",
+    "gothic",
+    "providers/amazon",
+    "providers/apple",
+    "providers/auth0",
+    "providers/azuread",
+    "providers/battlenet",
+    "providers/bitbucket",
+    "providers/box",
+    "providers/dailymotion",
+    "providers/deezer",
+    "providers/digitalocean",
+    "providers/discord",
+    "providers/dropbox",
+    "providers/eveonline",
+    "providers/facebook",
+    "providers/fitbit",
+    "providers/gitea",
+    "providers/github",
+    "providers/gitlab",
+    "providers/google",
+    "providers/gplus",
+    "providers/heroku",
+    "providers/instagram",
+    "providers/intercom",
+    "providers/lastfm",
+    "providers/line",
+    "providers/linkedin",
+    "providers/meetup",
+    "providers/microsoftonline",
+    "providers/naver",
+    "providers/nextcloud",
+    "providers/onedrive",
+    "providers/openidConnect",
+    "providers/paypal",
+    "providers/salesforce",
+    "providers/seatalk",
+    "providers/shopify",
+    "providers/slack",
+    "providers/soundcloud",
+    "providers/spotify",
+    "providers/steam",
+    "providers/stripe",
+    "providers/twitch",
+    "providers/twitter",
+    "providers/typetalk",
+    "providers/uber",
+    "providers/vk",
+    "providers/wepay",
+    "providers/xero",
+    "providers/yahoo",
+    "providers/yammer",
+    "providers/yandex",
+  ]
+  pruneopts = "UT"
+  revision = "c1ab589c2f2f13938ae949164a53e6bf1cd41dbd"
+  version = "v1.60.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:fb728bbaf02f42a1c8056e5375191b74ea8056f1e8f40bbfd47791f8d6d5d121"
+  name = "github.com/mrjones/oauth"
   packages = ["."]
   pruneopts = "UT"
-  revision = "adf5a7427709b9deb95d29d3fa8a2bf9cfd388f1"
-  version = "v1.2"
+  revision = "126b3521945043926caf026a3b969659b6a38d23"
 
 [[projects]]
   digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
@@ -94,22 +216,6 @@
   pruneopts = "UT"
   revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
   version = "v0.8.1"
-
-[[projects]]
-  digest = "1:8cd208cdb0680c83db6943518298071b020c11b99adf0a984dfe0772e192c627"
-  name = "github.com/sony/gobreaker"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "21dbfda1fc5e89b91bd0c835a91c31fe4d461e88"
-  version = "v0.4.1"
-
-[[projects]]
-  branch = "master"
-  digest = "1:9e62a30b87f7d0a8912ce519883fc5d313a24f3dc762b43c936494f2350a06d5"
-  name = "github.com/streadway/handy"
-  packages = ["breaker"]
-  pruneopts = "UT"
-  revision = "d5acb3125c2a6654d2d691e6851674a645333da1"
 
 [[projects]]
   branch = "master"
@@ -177,6 +283,31 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:f8b491a7c25030a895a0e579742d07136e6958e77ef2d46e769db8eec4e58fcd"
+  name = "golang.org/x/net"
+  packages = [
+    "context",
+    "context/ctxhttp",
+  ]
+  pruneopts = "UT"
+  revision = "c0dbc17a35534bf2e581d7a942408dc936316da4"
+
+[[projects]]
+  branch = "master"
+  digest = "1:79edde3241bb55de9f4143d5083bfcff722e550c3cb8db94084eab50d0e440b5"
+  name = "golang.org/x/oauth2"
+  packages = [
+    ".",
+    "google",
+    "internal",
+    "jws",
+    "jwt",
+  ]
+  pruneopts = "UT"
+  revision = "bf48bf16ab8d622ce64ec6ce98d2c98f916b6303"
+
+[[projects]]
+  branch = "master"
   digest = "1:382bb5a7fb4034db3b6a2d19e5a4a6bcf52f4750530603c01ca18a172fa3089b"
   name = "golang.org/x/sync"
   packages = ["semaphore"]
@@ -198,13 +329,90 @@
   revision = "342b2e1fbaa52c93f31447ad2c6abc048c63e475"
   version = "v0.3.2"
 
+[[projects]]
+  digest = "1:3c03b58f57452764a4499c55c582346c0ee78c8a5033affe5bdfd9efd3da5bd1"
+  name = "google.golang.org/appengine"
+  packages = [
+    ".",
+    "internal",
+    "internal/app_identity",
+    "internal/base",
+    "internal/datastore",
+    "internal/log",
+    "internal/modules",
+    "internal/remote_api",
+    "internal/urlfetch",
+    "urlfetch",
+  ]
+  pruneopts = "UT"
+  revision = "971852bfffca25b069c31162ae8f247a3dba083b"
+  version = "v1.6.5"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/go-kit/kit/examples/shipping/routing",
+    "github.com/go-kit/kit/endpoint",
     "github.com/go-kit/kit/log",
+    "github.com/go-kit/kit/transport/http",
+    "github.com/gorilla/mux",
+    "github.com/gorilla/pat",
+    "github.com/markbates/goth",
+    "github.com/markbates/goth/gothic",
+    "github.com/markbates/goth/providers/amazon",
+    "github.com/markbates/goth/providers/apple",
+    "github.com/markbates/goth/providers/auth0",
+    "github.com/markbates/goth/providers/azuread",
+    "github.com/markbates/goth/providers/battlenet",
+    "github.com/markbates/goth/providers/bitbucket",
+    "github.com/markbates/goth/providers/box",
+    "github.com/markbates/goth/providers/dailymotion",
+    "github.com/markbates/goth/providers/deezer",
+    "github.com/markbates/goth/providers/digitalocean",
+    "github.com/markbates/goth/providers/discord",
+    "github.com/markbates/goth/providers/dropbox",
+    "github.com/markbates/goth/providers/eveonline",
+    "github.com/markbates/goth/providers/facebook",
+    "github.com/markbates/goth/providers/fitbit",
+    "github.com/markbates/goth/providers/gitea",
+    "github.com/markbates/goth/providers/github",
+    "github.com/markbates/goth/providers/gitlab",
+    "github.com/markbates/goth/providers/google",
+    "github.com/markbates/goth/providers/gplus",
+    "github.com/markbates/goth/providers/heroku",
+    "github.com/markbates/goth/providers/instagram",
+    "github.com/markbates/goth/providers/intercom",
+    "github.com/markbates/goth/providers/lastfm",
+    "github.com/markbates/goth/providers/line",
+    "github.com/markbates/goth/providers/linkedin",
+    "github.com/markbates/goth/providers/meetup",
+    "github.com/markbates/goth/providers/microsoftonline",
+    "github.com/markbates/goth/providers/naver",
+    "github.com/markbates/goth/providers/nextcloud",
+    "github.com/markbates/goth/providers/onedrive",
+    "github.com/markbates/goth/providers/openidConnect",
+    "github.com/markbates/goth/providers/paypal",
+    "github.com/markbates/goth/providers/salesforce",
+    "github.com/markbates/goth/providers/seatalk",
+    "github.com/markbates/goth/providers/shopify",
+    "github.com/markbates/goth/providers/slack",
+    "github.com/markbates/goth/providers/soundcloud",
+    "github.com/markbates/goth/providers/spotify",
+    "github.com/markbates/goth/providers/steam",
+    "github.com/markbates/goth/providers/stripe",
+    "github.com/markbates/goth/providers/twitch",
+    "github.com/markbates/goth/providers/twitter",
+    "github.com/markbates/goth/providers/typetalk",
+    "github.com/markbates/goth/providers/uber",
+    "github.com/markbates/goth/providers/vk",
+    "github.com/markbates/goth/providers/wepay",
+    "github.com/markbates/goth/providers/xero",
+    "github.com/markbates/goth/providers/yahoo",
+    "github.com/markbates/goth/providers/yammer",
+    "github.com/markbates/goth/providers/yandex",
+    "go.mongodb.org/mongo-driver/bson/primitive",
     "go.mongodb.org/mongo-driver/mongo",
+    "go.mongodb.org/mongo-driver/mongo/options",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
