@@ -27,6 +27,12 @@ func NewHTTPServer(ctx context.Context, endpoints transport.Endpoints) http.Hand
 		encodeGetItemByIDResponse,
 	))
 
+	r.Methods("GET").Path("/item/createdby/{created_by_id}").Handler(httptransport.NewServer(
+		endpoints.GetItemsByCreatorID,
+		decodeGetItemsByCreatorIDRequest,
+		encodeGetItemsByCreatorIDResponse,
+	))
+
 	return r
 }
 

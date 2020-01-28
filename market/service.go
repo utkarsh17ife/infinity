@@ -15,7 +15,7 @@ type Service interface {
 	CreateItem(ctx context.Context, item *Item) (*Item, error)
 	GetItemByID(ctx context.Context, itemID primitive.ObjectID) (*Item, error)
 	GetItemByLocation(ctx context.Context, location string) (*Item, error)
-	GetItemByCreatorID(ctx context.Context, creatorID primitive.ObjectID) ([]*Item, error)
+	GetItemsByCreatorID(ctx context.Context, creatorID primitive.ObjectID) ([]*Item, error)
 	GetItemList(ctx context.Context) ([]*Item, error)
 	UpdateItem(ctx context.Context, updateItem *Item) (*Item, error)
 	SearchItem(ctx context.Context, searchString string) ([]*Item, error)

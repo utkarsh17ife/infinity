@@ -31,8 +31,9 @@ func (s *service) GetItemByID(ctx context.Context, itemID primitive.ObjectID) (*
 func (s *service) GetItemByLocation(ctx context.Context, location string) (*Item, error) {
 	return nil, nil
 }
-func (s *service) GetItemByCreatorID(ctx context.Context, creatorID primitive.ObjectID) ([]*Item, error) {
-	return nil, nil
+func (s *service) GetItemsByCreatorID(ctx context.Context, creatorID primitive.ObjectID) ([]*Item, error) {
+	items, err := s.repository.GetItemsByCreatorID(ctx, creatorID)
+	return items, err
 }
 func (s *service) GetItemList(ctx context.Context) ([]*Item, error) {
 	return nil, nil

@@ -12,7 +12,7 @@ type Endpoints struct {
 	CreateItem             endpoint.Endpoint
 	GetItemByID            endpoint.Endpoint
 	GetItemByLocation      endpoint.Endpoint
-	GetItemByCreatorID     endpoint.Endpoint
+	GetItemsByCreatorID    endpoint.Endpoint
 	GetItemList            endpoint.Endpoint
 	UpdateItem             endpoint.Endpoint
 	SearchItem             endpoint.Endpoint
@@ -24,8 +24,9 @@ type Endpoints struct {
 
 func MakeEndpoints(s market.Service) Endpoints {
 	return Endpoints{
-		CreateItem:  makeCreateItemEndpoint(s),
-		GetItemByID: makeGetItemByIDEndpoint(s),
+		CreateItem:          makeCreateItemEndpoint(s),
+		GetItemByID:         makeGetItemByIDEndpoint(s),
+		GetItemsByCreatorID: makeGetItemsByCreatorIDEndpoint(s),
 	}
 }
 
@@ -84,5 +85,38 @@ func makeGetItemByIDEndpoint(s market.Service) endpoint.Endpoint {
 
 		message := "Item found"
 		return CreateItemResponse{Item: item, Message: message}, nil
+	}
+}
+
+type GetItemsByCreatorIDRequest struct {
+	CreatedByID string
+}
+
+type GetItemsByCreatorIDResponse struct {
+	Items   []*market.Item `json:"items"`
+	Message string         `json:"message"`
+	Error   string         `json:"error"`
+}
+
+func makeGetItemsByCreatorIDEndpoint(s market.Service) endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (interface{}, error) {
+		var err error
+		req := request.(*GetItemsByCreatorIDRequest)
+
+		createdByID, err := primitive.ObjectIDFromHex(req.CreatedByID)
+
+		if err != nil {
+			errorMessage := "Invalid creator id"
+			return GetItemsByCreatorIDResponse{Items: nil, Message: errorMessage, Error: err.Error()}, nil
+		}
+
+		items, err := s.GetItemsByCreatorID(ctx, createdByID)
+		if err != nil {
+			errorMessage := "Failed to get item"
+			return GetItemsByCreatorIDResponse{Items: nil, Message: errorMessage, Error: err.Error()}, nil
+		}
+
+		message := "Items found"
+		return GetItemsByCreatorIDResponse{Items: items, Message: message}, nil
 	}
 }

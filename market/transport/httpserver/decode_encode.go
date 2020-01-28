@@ -31,3 +31,14 @@ func decodeGetItemByIDRequest(ctx context.Context, r *http.Request) (interface{}
 func encodeGetItemByIDResponse(ctx context.Context, w http.ResponseWriter, response interface{}) error {
 	return json.NewEncoder(w).Encode(response)
 }
+
+func decodeGetItemsByCreatorIDRequest(ctx context.Context, r *http.Request) (interface{}, error) {
+	vars := mux.Vars(r)
+	req := &transport.GetItemsByCreatorIDRequest{
+		CreatedByID: vars["created_by_id"],
+	}
+	return req, nil
+}
+func encodeGetItemsByCreatorIDResponse(ctx context.Context, w http.ResponseWriter, response interface{}) error {
+	return json.NewEncoder(w).Encode(response)
+}

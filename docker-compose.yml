@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+
+  mongo:
+    image: mongo:latest
+    networks:
+      - infinity_net
+    logging:
+      options:
+        max-size: 10m
+    ports:
+      - '27017:27017'
+
+networks:
+  infinity_net:
+    driver: bridge
+

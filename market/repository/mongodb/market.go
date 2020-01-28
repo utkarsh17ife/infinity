@@ -3,6 +3,7 @@ package mongodb
 import (
 	"context"
 	"errors"
+	"log"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
@@ -30,7 +31,7 @@ func (repo *repository) CreateItem(ctx context.Context, item *market.Item) (*mar
 	collection := repo.db.Database("cps_market").Collection("item")
 
 	item.ID = primitive.NewObjectID()
-	res, err := collection.InsertOne(context.Background(), item)
+	res, err := collection.InsertOne(ctx, item)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +45,7 @@ func (repo *repository) GetItemByID(ctx context.Context, _itemID primitive.Objec
 
 	collection := repo.db.Database("cps_market").Collection("item")
 
-	err := collection.FindOne(context.Background(), bson.M{"_id": _itemID}).Decode(&item)
+	err := collection.FindOne(ctx, bson.M{"_id": _itemID}).Decode(&item)
 	if err != nil {
 		return nil, err
 	}
@@ -55,8 +56,28 @@ func (repo *repository) GetItemByID(ctx context.Context, _itemID primitive.Objec
 func (repo *repository) GetItemByLocation(ctx context.Context, location string) (*market.Item, error) {
 	return nil, nil
 }
-func (repo *repository) GetItemByCreatorID(ctx context.Context, creatorID primitive.ObjectID) ([]*market.Item, error) {
-	return nil, nil
+func (repo *repository) GetItemsByCreatorID(ctx context.Context, creatorID primitive.ObjectID) ([]*market.Item, error) {
+	var items []*market.Item
+
+	collection := repo.db.Database("cps_market").Collection("item")
+
+	cur, err := collection.Find(ctx, bson.M{"created_by_id": creatorID})
+	if err != nil {
+		return nil, err
+	}
+
+	for cur.Next(ctx) {
+		var item market.Item
+		err := cur.Decode(&item)
+		if err != nil {
+			log.Fatal(err)
+		}
+		items = append(items, &item)
+	}
+
+	defer cur.Close(ctx)
+
+	return items, nil
 }
 func (repo *repository) GetItemList(ctx context.Context) ([]*market.Item, error) {
 	return nil, nil
